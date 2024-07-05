@@ -14,9 +14,9 @@ for filename in ['raw_data.csv', 'aims_matrix_final.csv', 'aim_network_nodes.csv
     check_data_present(filename)
 
 # Read in data from csv file
-all_data = pd.read_csv("./data/raw_data.csv")
-network_data = pd.read_csv("./data/aims_matrix_final.csv")
-node_name_data = pd.read_csv("./data/aim_network_nodes.csv")
+all_data = pd.read_csv("./raw_data.csv")
+network_data = pd.read_csv("./aims_matrix_final.csv")
+node_name_data = pd.read_csv("./aim_network_nodes.csv")
 
 
 #   Plot data for all columns
