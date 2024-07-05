@@ -61,7 +61,7 @@ nilsen_plot_names = [
 
 
 def check_data_present(filename):
-    filepath = f'./data/{filename}'
+    filepath = f'./{filename}'
     if not os.path.isfile(filepath):
         raise FileNotFoundError(f"The file '{filename}' was not found in the directory './data'."
                                 f"Please check that your working directory has a 'data' directory, and save data files"
