@@ -15,8 +15,7 @@ To run the code from your preferred Python interpreter or IDE:
 2. Run all lines in the run.py file 
 
 Note that error messages will display if the project data files are not stored appropriately. 
-To prevent such an error, please ensure there is a subdirectory called 'data' in your directory for this project,
-and that the data directory contains the following three files:
+To prevent such an error, please ensure that your project directory contains the following three files, names as below:
 1. aim_network_nodes.csv
 2. aims_matrix_final.csv
 3. raw_data.csv
