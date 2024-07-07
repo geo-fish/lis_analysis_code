@@ -12,7 +12,8 @@ To run the code from your command line:
 
 To run the code from your preferred Python interpreter or IDE:
 1. Open your IDE and navigate to the directory in which the code is saved
-2. Run all lines in the run.py file 
+2. Install all packages in requirements.txt
+3. Run all lines in the run.py file 
 
 Note that error messages will display if the project data files are not stored appropriately. 
 To prevent such an error, please ensure that your project directory contains the following three files, names as below:
