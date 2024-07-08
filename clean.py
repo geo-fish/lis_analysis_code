@@ -5,9 +5,7 @@ from operator import itemgetter
 from utils import nilsen_column_names, nilsen_plot_names
 
 
-def clean_column_data_and_store_summary(
-    col_name, df
-):
+def clean_column_data_and_store_summary(col_name, df):
     """
     Clean, summarise, and save the data from a single column in the review dataframe
 
@@ -41,7 +39,7 @@ def clean_column_data_and_store_summary(
                 item.title().strip() if len(item) > 7 else item.upper().strip()
                 for item in column_items
             ]
-            new_col_data.extend(column_items)   # Add all strings to new_col_data
+            new_col_data.extend(column_items)  # Add all strings to new_col_data
         else:
             new_col_data.append(x)  # Append integers and floats to list
 
@@ -69,7 +67,7 @@ def clean_column_data_and_store_summary(
     summary_df = pd.DataFrame(summary_data)
     save_path = f"./data_summaries/summary_data/{col_name}_summary.csv"
     summary_df.to_csv(save_path)
-    print(f'Data summary of {col_name} column saved to {save_path}')
+    print(f"Data summary of {col_name} column saved to {save_path}")
 
     return keys, counts
 
@@ -86,29 +84,34 @@ def add_spaces(key):  # Function to add spaces to cell text after any commas
 
 def combine_all_nilsen_components(all_data):
     """
-        Clean, summarise, and save the data from the columns describing Nilsen components
+    Clean, summarise, and save the data from the columns describing Nilsen components
 
-        Parameters
-        ----------
-        all_data: pandas dataframe
-            Review raw data
+    Parameters
+    ----------
+    all_data: pandas dataframe
+        Review raw data
 
-        Returns
-        ----------
-        clean_keys: list
-            Unique items in the dataframe column
-        clean_counts: list
-            Counts of each unique item in the dataframe column
-        """
+    Returns
+    ----------
+    clean_keys: list
+        Unique items in the dataframe column
+    clean_counts: list
+        Counts of each unique item in the dataframe column
+    """
     all_keys = []
     all_counts = []
-    components = ['Process Models', 'Implementation Theories', 'Determinant Frameworks', 'Classic Theories',
-                  'Evaluation Frameworks']
+    components = [
+        "Process Models",
+        "Implementation Theories",
+        "Determinant Frameworks",
+        "Classic Theories",
+        "Evaluation Frameworks",
+    ]
 
     for col, name, component in zip(nilsen_column_names, nilsen_plot_names, components):
         keys, values = clean_column_data_and_store_summary(col, all_data)
-        keys = keys[:-1]        # Remove key for NaNs
-        values = values[:-1]    # Remove count of NaNs
+        keys = keys[:-1]  # Remove key for NaNs
+        values = values[:-1]  # Remove count of NaNs
         all_keys.append(component)
         all_counts.append(sum(values))
         all_keys.extend(keys)

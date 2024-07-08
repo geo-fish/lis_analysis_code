@@ -26,7 +26,7 @@ def return_row_data_lists(data):
 
 
 def clean_node_names(node_csv):
-    """ Remove colons and letters from node labels, store as clean node csv for Gephi input
+    """Remove colons and letters from node labels, store as clean node csv for Gephi input
     Parameters
     -----------
     node_csv: pandas dataframe object
@@ -77,7 +77,7 @@ def create_permutations(row_data):
 
     """
     keys = []
-    for count, item in enumerate(row_data, start=1):    # Return counts of related themes
+    for count, item in enumerate(row_data, start=1):  # Return counts of related themes
         if item == 1:
             keys.append(count)
 

@@ -10,7 +10,7 @@ import os
 create_directories()
 
 
-for filename in ['raw_data.csv', 'aims_matrix_final.csv', 'aim_network_nodes.csv']:
+for filename in ["raw_data.csv", "aims_matrix_final.csv", "aim_network_nodes.csv"]:
     check_data_present(filename)
 
 # Read in data from csv file
@@ -32,4 +32,3 @@ plot.plot_nielsen_data(nilsen_keys, nilsen_counts, "Nilsen")
 network.clean_node_names(node_name_data)
 all_row_data = network.return_row_data_lists(network_data)
 network.write_all_permutations(all_row_data)
-
