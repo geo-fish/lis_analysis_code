@@ -10,6 +10,9 @@ column_names = [
     "implementation_science",
     "implementation_stage",
     "proctor_outcomes",
+    "service_outcomes",
+    "client_oucomes",
+    "implementation_outcomes"
 ]
 plot_titles = [
     "Study method",
@@ -20,10 +23,17 @@ plot_titles = [
     "Nielsen Component",
     "Implementation stage",
     "Proctor Component",
+    "Service outcomes",
+    "Client outcomes",
+    "Implementation outcomes"
 ]
 
 
 def create_directories():
+    """
+    Create required subdirectories in current project directory
+
+    """
     dir_names = ['plots', 'data_summaries', 'network_analysis']
     sub_dir_names = ['long_format', 'summary_data']
     for directory_name in dir_names:
@@ -61,7 +71,16 @@ nilsen_plot_names = [
 
 
 def check_data_present(filename):
+    """
+    Check required data files are present, raise error if not
+    Parameters
+    ----------
+    filename: str
+        name of a single required file
+
+    """
     filepath = f'./{filename}'
     if not os.path.isfile(filepath):
         raise FileNotFoundError(f"The file '{filename}' was not found in the project directory."
-                                f"Please check that your working directory contains all relevant data files, maintaining their filenames as downloaded from the repo")
+                                f"Please check that your working directory contains all relevant data files, "
+                                f"maintaining their filenames as downloaded from the repo")

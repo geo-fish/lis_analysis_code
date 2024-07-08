@@ -1,13 +1,23 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 
-from clean import clean_and_summarise_data_column
+from clean import clean_column_data_and_store_summary
 
 
-def plot_col_data(
+def plot_and_summarise_col_data(
     col_name, data, plot_name
-):  # Function to plot data from a single column
-    keys, counts = clean_and_summarise_data_column(col_name, data)
+):
+    """ Plot and store summary data from a single column
+     Parameters
+     -----------
+        col_name: str
+            Name of target column in dataframe
+        data: pandas dataframe
+            Dataframe of raw review data
+        plot_name: str
+            Title for output plot
+    """
+    keys, counts = clean_column_data_and_store_summary(col_name, data)
 
     x_max = max(counts) + 5     # Set max x-axis value as the max count plus 5
     x_min = 0                   # Set min x-axis value as 0

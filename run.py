@@ -19,12 +19,12 @@ network_data = pd.read_csv("./aims_matrix_final.csv")
 node_name_data = pd.read_csv("./aim_network_nodes.csv")
 
 
-#   Plot data for all columns
+#   Plot and store summary data for all columns
 for col_name, plot_title in zip(column_names, plot_titles):
-    plot.plot_col_data(col_name, all_data, plot_title)
+    plot.plot_and_summarise_col_data(col_name, all_data, plot_title)
 
-#   Plot data for nielsen components
-nilsen_keys, nilsen_counts = clean.combine_all_nielsen_components(all_data)
+#   Plot and store summary data for nielsen components
+nilsen_keys, nilsen_counts = clean.combine_all_nilsen_components(all_data)
 plot.plot_nielsen_data(nilsen_keys, nilsen_counts, "Nilsen")
 
 

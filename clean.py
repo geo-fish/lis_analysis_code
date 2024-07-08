@@ -5,9 +5,26 @@ from operator import itemgetter
 from utils import nilsen_column_names, nilsen_plot_names
 
 
-def clean_and_summarise_data_column(
+def clean_column_data_and_store_summary(
     col_name, df
-):  # Function to clean and save the data from a single column in the review dataframe
+):
+    """
+    Clean, summarise, and save the data from a single column in the review dataframe
+
+    Parameters
+    ----------
+    col_name: str
+        Target column name from review raw data
+    df: pandas dataframe
+        Review raw data
+
+    Returns
+    ----------
+    keys: list
+        Unique items in the dataframe column
+    counts: list
+        Counts of each unique item in the dataframe column
+    """
     col_data = df[col_name].to_list()
     col_data = [
         x.strip() if type(x) is str else x for x in col_data
@@ -67,29 +84,44 @@ def add_spaces(key):  # Function to add spaces to cell text after any commas
     return new_key
 
 
-def combine_all_nielsen_components(all_data):
+def combine_all_nilsen_components(all_data):
+    """
+        Clean, summarise, and save the data from the columns describing Nilsen components
+
+        Parameters
+        ----------
+        all_data: pandas dataframe
+            Review raw data
+
+        Returns
+        ----------
+        clean_keys: list
+            Unique items in the dataframe column
+        clean_counts: list
+            Counts of each unique item in the dataframe column
+        """
     all_keys = []
-    all_values = []
+    all_counts = []
     components = ['Process Models', 'Implementation Theories', 'Determinant Frameworks', 'Classic Theories',
                   'Evaluation Frameworks']
 
     for col, name, component in zip(nilsen_column_names, nilsen_plot_names, components):
-        keys, values = clean_and_summarise_data_column(col, all_data)
+        keys, values = clean_column_data_and_store_summary(col, all_data)
         keys = keys[:-1]        # Remove key for NaNs
         values = values[:-1]    # Remove count of NaNs
         all_keys.append(component)
-        all_values.append(sum(values))
+        all_counts.append(sum(values))
         all_keys.extend(keys)
-        all_values.extend(values)
+        all_counts.extend(values)
         all_keys.append("")
-        all_values.append(0)
+        all_counts.append(0)
 
     clean_keys = []
-    clean_values = []
+    clean_counts = []
 
-    for key, value in zip(all_keys, all_values):
+    for key, value in zip(all_keys, all_counts):
         if type(key) is not float:
             clean_keys.append(key)
-            clean_values.append(value)
+            clean_counts.append(value)
 
-    return clean_keys, clean_values
+    return clean_keys, clean_counts
